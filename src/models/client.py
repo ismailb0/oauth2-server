@@ -71,6 +71,6 @@ class Client(db.Model):
             'client_id': self.client_id,
             'client_secret': self.client_secret,
             'is_confidential': self.client_type,
-            '_redirect_uris': self.redirect_uris,
-            '_default_scopes': self.default_scopes,
+            'redirect_uris': self.redirect_uris,
+            'default_scopes': self.default_scopes,
         }

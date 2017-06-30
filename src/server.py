@@ -2,7 +2,7 @@ from flask import Flask
 from flask.blueprints import Blueprint
 from flask.ext.cors import CORS
 from raven.contrib.flask import Sentry
-from flasgger import Swagger
+from flask_oauthlib.provider import OAuth2Provider
 
 import config
 from models import db
@@ -14,35 +14,7 @@ from models import db
 #   returns a boolean to filter in only desired views
 
 server = Flask(__name__)
-
-server.config['SWAGGER'] = {
-    "swagger_version": "2.0",
-    "title": "OAuth2 Server",
-    "specs": [
-        {
-            "version": "0.0.1",
-            "title": "OAuth2 Server",
-            "endpoint": 'spec',
-            "route": '/oauth2-server/spec',
-            "rule_filter": lambda rule: True  # all in
-        }
-    ],
-    "static_url_path": "/oauth2-server/apidocs",
-    "securityDefinitions": {
-        "APIKey": {
-          "type": "apiKey",
-          "name": "Authorization",
-          "in": "header"
-        },
-    },
-    "security": [
-        {"APIKey": []}
-    ],
-    "headers": []
-}
-
-if config.DEBUG:
-    Swagger(server)
+oauth = OAuth2Provider(server)
 
 if config.SENTRY_DSN is not None:
     sentry = Sentry(server, dsn=config.SENTRY_DSN)

@@ -1,4 +1,4 @@
-""" Defines the Client repository """
+""" Defines the GrantToken repository """
 
 from models import GrantToken
 
@@ -13,7 +13,7 @@ class GrantTokenRepository:
 
     @staticmethod
     def save(client_id, code, request):
-        """ Query grant_token by client_id and code"""
+        """ Save grant_token by client_id and code"""
         expires = datetime.utcnow() + timedelta(seconds=100)
         grant = Grant(
             client_id=client_id,

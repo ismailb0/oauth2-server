@@ -7,13 +7,13 @@ from datetime import datetime, timedelta
 class TokenRepository:
     """ The repository for the token model """
 
-    @staticmethod
+    @oauth.tokengetter
     def load_token(access_token=None):
         """ Query token by access_token"""
         if access_token:
             return Token.query.filter_by(access_token=access_token).first()
 
-    @staticmethod
+    @oauth.tokensetter
     def save_token(token, request):
         """ Save token by token and request"""
         tokens = Token.query.filter_by(client_id=request.client.client_id,

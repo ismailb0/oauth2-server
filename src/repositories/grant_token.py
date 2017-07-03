@@ -6,12 +6,12 @@ from models import GrantToken
 class GrantTokenRepository:
     """ The repository for the grant_token model """
 
-    @staticmethod
+    @oauth.grantgetter
     def get(client_id, code):
         """ Query grant_token by client_id and code"""
         return Grant.query.filter_by(client_id=client_id, code=code).first()
 
-    @staticmethod
+    @oauth.grantsetter
     def save(client_id, code, request):
         """ Save grant_token by client_id and code"""
         expires = datetime.utcnow() + timedelta(seconds=100)

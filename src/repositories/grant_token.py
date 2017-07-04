@@ -2,6 +2,7 @@
 
 from models import GrantToken, db
 from services import current_user
+from server import oauth
 
 
 class GrantTokenRepository:

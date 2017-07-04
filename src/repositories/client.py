@@ -1,6 +1,7 @@
 """ Defines the Client repository """
 
 from models import Client
+from server import oauth
 
 
 class ClientRepository:

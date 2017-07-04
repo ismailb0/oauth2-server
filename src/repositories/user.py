@@ -1,6 +1,7 @@
 """ Defines the User repository """
 
 from models import User
+from server import oauth
 
 
 class UserRepository:

@@ -2,6 +2,7 @@
 
 from models import Token, db
 from datetime import datetime, timedelta
+from server import oauth
 
 
 class TokenRepository:

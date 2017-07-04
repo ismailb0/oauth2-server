@@ -1,6 +1,6 @@
 """ Defines the Token repository """
 
-from models import Token
+from models import Token, db
 from datetime import datetime, timedelta
 
 
@@ -25,7 +25,7 @@ class TokenRepository:
         expires_in = token.get('expires_in')
         expires = datetime.utcnow() + timedelta(seconds=expires_in)
 
-        token = Token(
+        tok = Token(
             access_token=token['access_token'],
             refresh_token=token['refresh_token'],
             token_type=token['token_type'],
@@ -34,6 +34,6 @@ class TokenRepository:
             client_id=request.client.client_id,
             user_id=request.user.id,
         )
-        db.session.add(token)
+        db.session.add(tok)
         db.session.commit()
-        return token
+        return tok

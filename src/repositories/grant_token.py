@@ -1,6 +1,6 @@
 """ Defines the GrantToken repository """
 
-from models import GrantToken
+from models import GrantToken, db
 from services import current_user
 
 

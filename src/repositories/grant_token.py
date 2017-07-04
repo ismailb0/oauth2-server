@@ -1,6 +1,7 @@
 """ Defines the GrantToken repository """
 
 from models import GrantToken
+from services import current_user
 
 
 class GrantTokenRepository:
@@ -20,7 +21,7 @@ class GrantTokenRepository:
             code=code['code'],
             redirect_uri=request.redirect_uri,
             _scopes=' '.join(request.scopes),
-            user=get_current_user(),
+            user=current_user(),
             expires=expires
         )
         db.session.add(grant)

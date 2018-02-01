@@ -10,7 +10,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def sign():
-    return "<form action='/signin' method='get'><button type='submit'>Sign in</button></form>"
+    return 'test'
+    # return "<form action='/signin' method='get'><button type='submit'>Sign in</button></form>"
 
 @app.route('/signin', methods=['GET'])
 def signin():
